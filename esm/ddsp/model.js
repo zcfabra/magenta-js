@@ -1,6 +1,5 @@
 import '@tensorflow/tfjs-backend-webgl';
 import * as tf from '@tensorflow/tfjs';
-import * as Tone from 'tone';
 import { resampleAndMakeMono } from '../core/audio_utils';
 import { upsample_f0 } from '../spice/pitch_utils';
 import { MODEL_SAMPLE_RATE } from '../spice/spice';
@@ -109,11 +108,10 @@ class DDSP {
         const trimmedAudioChannelData = audioBuffer
             .slice(0, audioFeatures.originalRecordedBufferLength);
         const trimmedACModified = trimmedAudioChannelData.map((val) => val * (this.settings.postGain || 1));
-        const audioCtx = Tone.context;
-        const trimmedAudioBuffer = arrayBufferToAudioBuffer(audioCtx, trimmedACModified, MODEL_SAMPLE_RATE);
+        const trimmedAudioBuffer = arrayBufferToAudioBuffer(null, trimmedACModified, MODEL_SAMPLE_RATE);
         const resampledAudio = await resampleAndMakeMono(trimmedAudioBuffer, OUTPUT_SAMPLE_RATE);
         const bufferWithReverbData = await addReverb({
-            audioCtx,
+            audioCtx: null,
             arrayBuffer: resampledAudio,
             sampleRate: OUTPUT_SAMPLE_RATE,
         });

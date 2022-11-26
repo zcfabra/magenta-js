@@ -18,7 +18,7 @@
 import * as Tone from "tone"
 
 export const arrayBufferToAudioBuffer =
-  (audioCtx: AudioContext, arrayBuffer: Float32Array, sampleRate: number):
+  (audioCtx: AudioContext | null, arrayBuffer: Float32Array, sampleRate: number):
     AudioBuffer => {
     const newBuffer =
       Tone.context.createBuffer(1, arrayBuffer.length, sampleRate);

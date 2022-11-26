@@ -22,7 +22,7 @@ export async function addReverb({
   audioCtx,
   arrayBuffer,
   sampleRate,
-}: { audioCtx: AudioContext; arrayBuffer: Float32Array; sampleRate: number; }):
+}: { audioCtx: AudioContext | null; arrayBuffer: Float32Array; sampleRate: number; }):
   Promise<Float32Array> {
   // Tone.setContext(audioCtx);
   let bufferWithReverb;
