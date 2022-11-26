@@ -214,7 +214,7 @@ class DDSP {
     const trimmedACModified = trimmedAudioChannelData.map(
         (val) => val * (this.settings.postGain || 1));
 
-    const audioCtx = new Tone.Context();
+    const audioCtx =  Tone.context;
     const trimmedAudioBuffer = arrayBufferToAudioBuffer(
         audioCtx, trimmedACModified, MODEL_SAMPLE_RATE);
     const resampledAudio =
