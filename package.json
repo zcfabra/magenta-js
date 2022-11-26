@@ -16,7 +16,8 @@
     "protobufjs": "^6.8.6",
     "staffrender": "^0.2.1",
     "tonal": "^2.0.0",
-    "tone": "^14.7.58"
+    "tone": "^14.7.58",
+    "tsc": "^2.0.4"
   },
   "devDependencies": {
     "@types/clone": "^0.1.30",
@@ -45,8 +46,8 @@
     "tsify": "^3.0.4",
     "tslint": "^5.9.1",
     "typedoc": "^0.16.10",
-    "typescript": "^3.3.3333",
-    "webpack": "^4.24.0",
+    "typescript": "^3.9.10",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14",
     "webpack-node-externals": "^1.7.2"
