@@ -1,7 +1,6 @@
 import * as Tone from 'tone';
 import { arrayBufferToAudioBuffer } from './buffer_utils';
 export async function addReverb({ audioCtx, arrayBuffer, sampleRate, }) {
-    Tone.setContext(audioCtx);
     let bufferWithReverb;
     let resampledAudioBuffer = arrayBufferToAudioBuffer(audioCtx, arrayBuffer, sampleRate);
     const renderingPromise = Tone.Offline(() => {
