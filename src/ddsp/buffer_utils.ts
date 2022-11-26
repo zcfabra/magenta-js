@@ -15,27 +15,29 @@
  * limitations under the License.
  */
 
+import * as Tone from "tone"
+
 export const arrayBufferToAudioBuffer =
-    (audioCtx: AudioContext, arrayBuffer: Float32Array, sampleRate: number):
-        AudioBuffer => {
-          const newBuffer =
-              audioCtx.createBuffer(1, arrayBuffer.length, sampleRate);
+  (audioCtx: AudioContext, arrayBuffer: Float32Array, sampleRate: number):
+    AudioBuffer => {
+    const newBuffer =
+      Tone.context.createBuffer(1, arrayBuffer.length, sampleRate);
 
-          newBuffer.copyToChannel(arrayBuffer, 0);
+    newBuffer.copyToChannel(arrayBuffer, 0);
 
-          return newBuffer;
-        };
+    return newBuffer;
+  };
 
 export const sliceAudioBuffer =
-    (audioCtx: AudioContext, audioBuffer: AudioBuffer, start = 0,
-     end = audioBuffer.length, sampleRate: number): AudioBuffer => {
-      const newBuffer = audioCtx.createBuffer(
-          audioBuffer.numberOfChannels, end - start, sampleRate);
+  (audioCtx: AudioContext, audioBuffer: AudioBuffer, start = 0,
+    end = audioBuffer.length, sampleRate: number): AudioBuffer => {
+    const newBuffer = Tone.context.createBuffer(
+      audioBuffer.numberOfChannels, end - start, sampleRate);
 
-      for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
-        newBuffer.copyToChannel(
-            audioBuffer.getChannelData(i).slice(start, end), i);
-      }
+    for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+      newBuffer.copyToChannel(
+        audioBuffer.getChannelData(i).slice(start, end), i);
+    }
 
-      return newBuffer;
-    };
+    return newBuffer;
+  };
